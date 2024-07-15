@@ -1,3 +1,7 @@
 function parseURL(url) {
-  return new URL(url);
+  try {
+    return new URL(url);
+  } catch (e) {
+    return null;
+  }
 }
