@@ -9,10 +9,10 @@ const BasicMath = {
 
 // Tulis kodemu di bawah ini ...
 // fungsi add dari basicmath sebagai listener dari event calculate
-eventEmitter.on('calculate', add);
+eventEmitter.on('calculate', BasicMath.add);
 
 // fungsi subtract dari basicmath sebagai listener dari event calculate
-eventEmitter.on('calculate', subtract);
+eventEmitter.once('calculate', BasicMath.subtract);
 
 // bangkitkan event calculate dengan parameter angka 2 dan 3
 eventEmitter.emit('calculate', 2, 3);
