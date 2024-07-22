@@ -11,10 +11,19 @@
  */
 
 // Tulis kode impor di bawah ini
+const { spawn } = require('child_process');
+const { env } = require('process');
 
 function main(myEnvVar) {
   // Tulis jawaban Anda di bawah ini
-  
+  const options = {
+    env: {
+      MY_ENV_VAR: myEnvVar,
+    },
+  };
+
+  const child = spawn(process.execPath, ['run-me.js'], options);
+  return child.stdout;
 }
 
 module.exports = main;
