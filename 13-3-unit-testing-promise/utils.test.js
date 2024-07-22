@@ -7,9 +7,9 @@ const assert = require('assert');
   // when given a number less than 1, it should return an error
   await assert.rejects(generateRandomStringProm(0), { message: 'Length must be greater than 0' });
 
-  // when given a number, it should return a string
-  const result = await generateRandomStringProm(10);
-  assert.strictEqual(typeof result, 'string');
+  // positive test case, when given a number greater than 0
+  const result = await generateRandomStringProm(5);
+  assert.strictEqual(result.length, 5, 'should return a string with length 5');
 
   console.log('All tests passed');
 })();
