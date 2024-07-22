@@ -11,4 +11,9 @@ generateRandomString(0, (error, result) => {
   assert.strictEqual(error.message, 'Length must be greater than 0');
 });
 
+// testing skenario ketika length = 5
+generateRandomString(5, (error, result) => {
+  assert.strictEqual(error, null, 'should be null when length');
+  assert.strictEqual(result.length, 5, 'should return a string with length 5');
+});
 console.log('tests passed!');
