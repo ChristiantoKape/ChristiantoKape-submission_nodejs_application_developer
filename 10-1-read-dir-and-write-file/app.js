@@ -14,10 +14,33 @@
  */
 
 const fs = require('fs');
+const path = require('path');
 
 function readDirAndWriteFile() {
   // Tulis jawaban di bawah ini
-  
+  const directoryPath = __dirname;
+
+  fs.readdir(directoryPath, { withFileTypes: true }, (err, files) => {
+    if(err) {
+      return console.log('Unable to scan directory: ' + err);
+    }
+
+    const directories = files
+      .filter(file => file.isDirectory())
+      .map(dir => dir.name)
+
+    directories.sort((a, b) => a.localeCompare(b));
+
+    const outputPath = path.join(__dirname, 'out.txt');
+    const outputData = directories.join(',');
+
+    fs.writeFile(outputPath, outputData, (err) => {
+      if(err) {
+        return console.log('Unable to write file: ' + err);
+      }
+      console.log('Directory names have been written to out.txt');
+    })
+  });
 }
 
 readDirAndWriteFile();
